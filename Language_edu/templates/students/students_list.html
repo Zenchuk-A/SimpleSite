@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for student in page_obj %}
+    <div class="row">
+      <div class="col-2">  
+        {% if student.image %}
+          <img src="{{ student.image.url }}" height="100">
+        {% endif %}
+      </div>
+
+      <div class="col-10">  
+        <div>
+          {{ student.first_name }} {{ student.last_name }} — {{ student.birthday }}
+        </div>
+        <div>
+          <a href="{% url 'students:student_edit' student.id %}">Edit record</a> | <a href="{% url 'students:student_delete' student.id %}">Delete record</a>
+        </div>
+      </div>
+      {% if not forloop.last %}
+        <hr class="mt-3"> 
+      {% endif %}
+    </div>
+  {% endfor %}
+  {% include "includes/paginator.html" %}
+{% endblock %} 

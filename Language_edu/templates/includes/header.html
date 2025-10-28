@@ -1,0 +1,28 @@
+<header>
+  <nav class="navbar shadow-sm">
+    <div class="container">
+      {% with request.resolver_match.view_name as view_name %}
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'pages:homepage' %} active {% endif %}"
+              href="{% url 'pages:homepage' %}">
+              About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'students:student_create' %} active {% endif %}"
+              href="{% url 'students:student_create' %}">
+              Add a student
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'students:students_list' %} active {% endif %}"
+              href="{% url 'students:students_list' %}">
+              List of students
+            </a>
+          </li>
+        </ul>
+      {% endwith %}
+    </div>
+  </nav>
+</header>
