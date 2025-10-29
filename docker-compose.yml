@@ -1,0 +1,29 @@
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+  db:
+    image: postgres:14
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U language_edu_user -d language_edu"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+  web:
+    build: ./Language_edu/
+    env_file: .env
+    volumes:
+      - static:/web_static
+      - media:/Language_edu/media
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"

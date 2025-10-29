@@ -68,10 +68,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     } if USE_SQLITE else {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'django'),
-        'USER': os.getenv('POSTGRES_USER', 'django'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', ''),
+        'NAME': os.getenv('POSTGRES_DB', 'language_edu'),
+        'USER': os.getenv('POSTGRES_USER', 'language_edu_user'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'language_edu_password'),
+        'HOST': os.getenv('DB_HOST', 'db'),
         'PORT': os.getenv('DB_PORT', 5432),
     }
 }
@@ -107,4 +107,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/Language_edu/media'
