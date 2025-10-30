@@ -1,9 +1,10 @@
-# A simple website
-### But we have big plans
+# A simple website, but we have big plans
 
 Cloning the repository.
 
 Go to the repository folder.
+
+### If you don't have Docker on your computer, you should install it first.
 
 Creating Docker containers:
 ```
